@@ -1,13 +1,7 @@
 
   @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins:wght@300&display=swap');
-
-
-.App {
-  
-  /* display: flex; */
-  justify-content: space-between;
-
-  text-align: center;
+.body{
+  font-family: poppins;
 }
 
 .App-logo {
@@ -29,7 +23,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .App-link {
@@ -53,29 +47,86 @@
   column-gap: 20px;
   color: white;
   text-align: right;
-  height: 50px;
-  background-color: #aa40f5;
+  height: 45px;
+  background-color: #f5408b;
 }
+
+  
 .nav h3{
   padding-right: 20px;
   align-content: flex-end;
 }
-
-.displayLabel{
-
-  
-  width: 150px;
-  height: 100px;
-  display: grid;
-  grid-template-rows: 1fr;
-  margin: 10px auto;
-  font-size: 25px;
-  background-color: #edddf8;
-  border-radius: 7px;
-
+.mybutton{
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
 }
 
-.myButtons{
+
+
+.drops{
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: solid rgb(239, 221, 231);
+  font-size: 20px;
+  font-weight:200;
+  font-family: poppins;
+}
+
+.App{
+
+  margin-top: 20px;
+
+  margin-left: 40px;
+  
+  font-size: 20px;
+  color: #000000;
+  width: 400px;
+  border-radius: 2px;
+  padding: 30px;
+  padding-left: 20px;
+  border-radius: 15px;
+box-shadow: 5px 5px 5px 5px rgb(186, 178, 178);
+  background-color: #ffffff;
+}
+
+.btn{
+  background-color: #f7e0fb;
+  border: solid rgb(246, 121, 238);
+  border-radius: 10px;
+  padding: 25px;
+  display: flex;
+  margin-top: 12px;
+
+}
+.txt{
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.openButton{
+  /* width: 250px; */
+  border: solid rgb(231, 102, 147);
+  font-family: poppins;
+  background-color: #ffffff;
+  margin-top: 15px;
+  margin-left: 15px;
   padding: 20px;
-  
+margin-bottom: 13px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px 1px rgb(232, 213, 230);
+
 }
+
+.whiteHeader{
+  justify-content: space-between;
+  display: flex;
+  background-color: #ffffff;
+  box-shadow: 12px 12px 12px 10px rgb(228, 228, 228);
+}
+
+
