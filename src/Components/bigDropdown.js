@@ -2,14 +2,13 @@ import { useState } from "react";
 import Dropdown from "./Dropdown";
 import "../App.css"
 
-export function OpenButton({ buttonClicked, setButtonClicked }) {
+export function OpenButton({buttonText,setButtonText, buttonClicked, setButtonClicked }) {
 
-    const [buttonText, setButtonText] = useState("Open Filters")
     return (
         <div className="whiteHeader">
 
             <div className="buttons"
-            style={{width:"330px"}} >
+                style={{ width: "330px" }} >
 
                 <button
                     className="openButton"
@@ -34,8 +33,8 @@ export function OpenButton({ buttonClicked, setButtonClicked }) {
 
 
 
-                <select value={"sort By"} 
-                className="openButton">
+                <select value={"sort By"}
+                    className="openButton">
 
                     <option>Sort By</option>
                     <option>Price : Low to High</option>
@@ -47,27 +46,30 @@ export function OpenButton({ buttonClicked, setButtonClicked }) {
                 </select>
 
             </div>
-            
+
 
             <h1 style={{ fontWeight: "400" }}>To&From</h1>
 
-            <span className="cart" style={{ fontWeight: "400" , width:"280px" }}>Cart and search bar</span>
+            <span className="cart" style={{ fontWeight: "400", width: "280px" }}>Cart and search bar</span>
         </div>
     )
 }
 
 
-export default function 
-BigDropdown() {
+export default function
+    BigDropdown() {
+
+    const [buttonText, setButtonText] = useState("Open Filters")
+
 
     const [buttonClicked, setButtonClicked] = useState(false)
-    
+
     console.log(buttonClicked)
     return (
         <div>
-            <OpenButton buttonClicked={buttonClicked} setButtonClicked={setButtonClicked} />
+            <OpenButton buttonText={buttonText} setButtonText={setButtonText} buttonClicked={buttonClicked} setButtonClicked={setButtonClicked} />
 
-            {buttonClicked && <Dropdown  setButtonClicked={setButtonClicked}/>}
+            {buttonClicked && <Dropdown setButtonText={setButtonText} setButtonClicked={setButtonClicked} />}
         </div>
     )
 }

@@ -1,22 +1,24 @@
 import React from 'react'
+import { useState } from 'react';
 import "./App.css";
 import BigDropdown, { OpenButton } from './Components/bigDropdown';
 function Nav() {
   return (
     <div className='nav'>
 
-      
-        <h3>Take gift quiz</h3>
-      
-<div >
-      <span>Login</span>
-      <span> |  </span>
-      <span>Signup</span>
+
+      <h3>Take gift quiz</h3>
+
+      <div >
+        <span>Login</span>
+        <span> |  </span>
+        <span>Signup</span>
       </div>
     </div>)
 }
 
 function DatafromAPI() {
+  
   return (
     <div className='someData'
     >
@@ -31,11 +33,11 @@ export default function App() {
   return (
     <div>
       <Nav />
-      
+
       <BigDropdown />
-      
-      <DatafromAPI/>
-      
+
+      <DatafromAPI />
+
     </div>
   )
 }

@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import "../App.css";
 
-function MyButtons({ changeURL, deleteChanges, setButtonClicked }) {
-    function setBtnClk (){
+function MyButtons({setButtonText, changeURL, deleteChanges, setButtonClicked }) {
+    function setBtnClk() {
         setButtonClicked(false)
+        setButtonText("Open Filters")
     }
     return (
         <div className="mybutton">
@@ -18,9 +19,9 @@ function MyButtons({ changeURL, deleteChanges, setButtonClicked }) {
                 className="btn"
                 onClick={() => {
                     // setButtonClicked(false)
-                    {setBtnClk()}
-                    {changeURL()}
-                    
+                    { setBtnClk() }
+                    { changeURL() }
+
                 }
                 }>apply changes</button>
 
@@ -61,7 +62,7 @@ function MyDropDowns({ data, string, setVal, val }) {
 }
 
 
-export default function Dropdown({ setButtonClicked }) {
+export default function Dropdown({setButtonText, setButtonClicked }) {
 
 
     const [sP, ssP] = useSearchParams();
@@ -138,7 +139,7 @@ export default function Dropdown({ setButtonClicked }) {
             <MyDropDowns data={state.relationships} string={"relationship"} setVal={setRelationVal} val={relationVal} />
 
 
-            <MyButtons changeURL={updateMyUrl} deleteChanges={deleteChanges} setButtonClicked={setButtonClicked} />
+            <MyButtons setButtonText={setButtonText} changeURL={updateMyUrl} deleteChanges={deleteChanges} setButtonClicked={setButtonClicked} />
 
             <h1></h1>
 
