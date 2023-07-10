@@ -3,20 +3,27 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import "../App.css";
 
-function MyButtons({ changeURL , deleteChanges}) {
+function MyButtons({ changeURL, deleteChanges, setButtonClicked }) {
+    function setBtnClk (){
+        setButtonClicked(false)
+    }
     return (
         <div className="mybutton">
 
-<button
-            className="btn del"
-            onClick={deleteChanges}
-                >Delete changes</button>
             <button
-            className="btn"
-                onClick={
-                    changeURL
+                className="btn del"
+                onClick={deleteChanges}
+            >Delete changes</button>
+            <button
+                className="btn"
+                onClick={() => {
+                    // setButtonClicked(false)
+                    {setBtnClk()}
+                    {changeURL()}
+                    
+                }
                 }>apply changes</button>
-            
+
 
             {/* <button onClick={deleteFilter}> Clear Changes </button> */}
 
@@ -54,7 +61,7 @@ function MyDropDowns({ data, string, setVal, val }) {
 }
 
 
-export default function Dropdown() {
+export default function Dropdown({ setButtonClicked }) {
 
 
     const [sP, ssP] = useSearchParams();
@@ -109,28 +116,30 @@ export default function Dropdown() {
         })
     }
 
-    function deleteChanges(){
+    function deleteChanges() {
         setGenderVal("")
         setOccasionVal("")
         setRelationVal("")
-        ssP({gender: "",
+        ssP({
+            gender: "",
             occasion: "",
-            relationship: ""})
+            relationship: ""
+        })
     }
 
     return (
 
         <div className="App">
-            
+
             <MyDropDowns data={state.genders} string={"gender"} setVal={setGenderVal} val={genderVal} />
 
             <MyDropDowns data={state.occasions} string={"occasion"} setVal={setOccasionVal} val={occasionVal} />
 
             <MyDropDowns data={state.relationships} string={"relationship"} setVal={setRelationVal} val={relationVal} />
-            
-            
-                <MyButtons changeURL={updateMyUrl} deleteChanges={deleteChanges}/>
-           
+
+
+            <MyButtons changeURL={updateMyUrl} deleteChanges={deleteChanges} setButtonClicked={setButtonClicked} />
+
             <h1></h1>
 
         </div>
