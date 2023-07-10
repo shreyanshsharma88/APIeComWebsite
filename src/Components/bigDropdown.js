@@ -2,6 +2,11 @@ import { useState } from "react";
 import Dropdown from "./Dropdown";
 import "../App.css"
 
+import { BsCart4 } from 'react-icons/bs'
+import {BiSearchAlt2} from 'react-icons/bi'
+import {FiGift} from 'react-icons/fi'
+import {RiArrowDropDownLine} from 'react-icons/ri'
+
 export function OpenButton({buttonText,setButtonText, buttonClicked, setButtonClicked }) {
 
     return (
@@ -50,21 +55,21 @@ export function OpenButton({buttonText,setButtonText, buttonClicked, setButtonCl
 
             <h1 style={{ fontWeight: "400" }}>To&From</h1>
 
-            <span className="cart" style={{ fontWeight: "400", width: "280px" }}>Cart and search bar</span>
+            <span className="cart" style={{ fontWeight: "400", width: "280px" }}>Search and Cart</span>
+            
         </div>
     )
 }
 
 
-export default function
-    BigDropdown() {
+export default function BigDropdown() {
 
     const [buttonText, setButtonText] = useState("Open Filters")
 
-
     const [buttonClicked, setButtonClicked] = useState(false)
 
-    console.log(buttonClicked)
+
+    // console.log(buttonClicked)
     return (
         <div>
             <OpenButton buttonText={buttonText} setButtonText={setButtonText} buttonClicked={buttonClicked} setButtonClicked={setButtonClicked} />

@@ -21,12 +21,9 @@ function MyButtons({setButtonText, changeURL, deleteChanges, setButtonClicked })
                     // setButtonClicked(false)
                     { setBtnClk() }
                     { changeURL() }
-
                 }
                 }>apply changes</button>
 
-
-            {/* <button onClick={deleteFilter}> Clear Changes </button> */}
 
         </div>
     )
@@ -80,7 +77,6 @@ export default function Dropdown({setButtonText, setButtonClicked }) {
     console.log("genderval:  " + genderVal)
     console.log("occval:  " + occasionVal)
     console.log("relval:  " + relationVal)
-
 
 
     useEffect(() => {
@@ -137,7 +133,6 @@ export default function Dropdown({setButtonText, setButtonClicked }) {
             <MyDropDowns data={state.occasions} string={"occasion"} setVal={setOccasionVal} val={occasionVal} />
 
             <MyDropDowns data={state.relationships} string={"relationship"} setVal={setRelationVal} val={relationVal} />
-
 
             <MyButtons setButtonText={setButtonText} changeURL={updateMyUrl} deleteChanges={deleteChanges} setButtonClicked={setButtonClicked} />
 
