@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import "../App.css";
 
+
 function MyButtons({ setButtonText, changeURL, deleteChanges, setButtonClicked }) {
     function setBtnClk() {
         setButtonClicked(false)
@@ -13,7 +14,9 @@ function MyButtons({ setButtonText, changeURL, deleteChanges, setButtonClicked }
 
             <button
                 className="btn del"
-                onClick={deleteChanges}
+                onClick={()=>{
+                    {setBtnClk()}
+                    {deleteChanges()}}}
             >Delete changes</button>
             <button
                 className="btn"
@@ -59,15 +62,10 @@ function MyDropDowns({ data, string, setVal, val }) {
 }
 
 
-export default function Dropdown({ state, sP, ssP, genderVal, setGenderVal, occasionVal, setOccasionVal, relationVal, setRelationVal,
+export default function Dropdown({  state, sP, ssP, genderVal, setGenderVal, occasionVal, setOccasionVal, relationVal, setRelationVal,
     setButtonText, setButtonClicked
 }) {
 
-    console.log(sP)
-
-    console.log("genderval:  " + genderVal)
-    console.log("occval:  " + occasionVal)
-    console.log("relval:  " + relationVal)
 
     function updateMyUrl() {
         ssP({
@@ -84,7 +82,8 @@ export default function Dropdown({ state, sP, ssP, genderVal, setGenderVal, occa
         ssP({
             gender: "",
             occasion: "",
-            relationship: ""
+            relationship: "",
+            
         })
     }
 

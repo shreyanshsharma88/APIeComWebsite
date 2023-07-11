@@ -4,35 +4,11 @@ import "./App.css";
 import { useSearchParams } from "react-router-dom";
 import Dropdown from './Components/Dropdown';
 import BigDropdown, { OpenButton } from './Components/bigDropdown';
-function Nav() {
-  return (
-    <div className='nav'>
+import DisplayFilters from './Components/displayFilters';
+import Nav from './Components/nav';
 
-
-      <h3>Take gift quiz</h3>
-
-      <div >
-        <span>Login</span>
-        <span> |  </span>
-        <span>Signup</span>
-      </div>
-    </div>)
-}
-
-function DatafromAPI() {
-
-  return (
-    <div className='someData'
-    >
-      {/* <h1>Product data</h1> */}
-      <h1>Product Data</h1>
-    </div>
-  )
-}
 
 export default function App() {
-
-
   const [sP, ssP] = useSearchParams();
   const [state, setState] = useState({
     occasions: [],
@@ -44,6 +20,7 @@ export default function App() {
   const [occasionVal, setOccasionVal] = useState(sP.get("occasion") ?? "")
   const [relationVal, setRelationVal] = useState(sP.get("relationship") ?? "")
 
+  
   useEffect(() => {
     (async () => {
       const [occasions, relationships, genders] = await Promise.all([
@@ -67,23 +44,27 @@ export default function App() {
     })();
   }, []);
 
-  //console.log(state.genders)
-
-
-
   return (
     <div>
       <Nav />
       <BigDropdown
-       state={state} 
-      // stateGen={state.genders} stateOcc={state.occasions} stateRel={state.relationships} 
-      sP={sP} ssP={ssP} 
-      genderVal={genderVal} setGenderVal={setGenderVal} 
-      occasionVal={occasionVal} setOccasionVal={setOccasionVal} 
-      relationVal={relationVal} setRelationVal={setRelationVal} />
+        state={state}
+        // stateGen={state.genders} stateOcc={state.occasions} stateRel={state.relationships} 
+        sP={sP} ssP={ssP}
+        genderVal={genderVal} setGenderVal={setGenderVal}
+        occasionVal={occasionVal} setOccasionVal={setOccasionVal}
+        relationVal={relationVal} setRelationVal={setRelationVal}
+      />
       {/* <Dropdown stateGen={state.genders} stateOcc={state.occasions} stateRel={state.relationships} sP={sP} ssP={ssP} genderVal={genderVal} setGenderVal={setGenderVal} occasionVal={occasionVal} setOccasionVal={setOccasionVal} relationVal={relationVal} setRelationVal={setRelationVal}  /> */}
-      <DatafromAPI />
 
+
+      <div style={{display:"flex" ,justifyContent:"space-between" , padding:"25px"}}>
+        <DisplayFilters displayStr={"Gift For: "} string={"gender"} sP={sP} data={state.genders} ssP={ssP}/>
+        <DisplayFilters displayStr={"Occasion: "} string={"occasion"} sP={sP} data={state.occasions}  ssP={ssP}/>
+        <DisplayFilters displayStr={"Relationship: "} string={"relationship"} sP={sP} data={state.relationships}  ssP={ssP}/>
+        {/* <DisplayFilters string={"orderBy"} sP={sP} data={state.relationships} /> */}
+
+      </div>
     </div>
   )
 }
