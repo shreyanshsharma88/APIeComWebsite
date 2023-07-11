@@ -98,9 +98,9 @@ export default function Dropdown({
     setOccasionVal("");
     setRelationVal("");
     ssP({
-      gender: "",
-      occasion: "",
-      relationship: "",
+    //   gender: "",
+    //   occasion: "",
+    //   relationship: "",
     });
   }
 

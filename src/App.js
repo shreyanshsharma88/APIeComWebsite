@@ -22,6 +22,8 @@ export default function App() {
   
   const [sortVal, setSortVal] = useState(sP.get("orderBy" ?? ""));
 
+  const [displayValues , setDisplayValues] = useState("Sort:")
+
   useEffect(() => {
     (async () => {
       const [occasions, relationships, genders] = await Promise.all([
@@ -93,10 +95,12 @@ export default function App() {
           ssP={ssP}
         />
 
-        <DisplaySortOptions sP={sP} sortVal={sortVal} setSortVal={setSortVal} ssP={ssP}/>
+        {sortVal &&<DisplaySortOptions sP={sP} sortVal={sortVal} setSortVal={setSortVal} ssP={ssP} displayValues={displayValues} setDisplayValues={setDisplayValues}/>}
 
         {/* <DisplayFilters string={"orderBy"} sP={sP} data={state.relationships} /> */}
       </div>
+
+      <button onClick={ () => {ssP({})}}>remove all</button>
     </div>
   );
 }

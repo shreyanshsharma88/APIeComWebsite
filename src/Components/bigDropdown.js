@@ -77,27 +77,29 @@ export function OpenButton({
     );
 }
 
-function DisplaySortOptions({ sP, sortVal, setSortVal, ssP }) {
+function DisplaySortOptions({ sP, sortVal, setSortVal, ssP, displayValues, setDisplayValues }) {
     let sVal = sP.get("orderBy")
     if (!sVal) {
         return;
     }
 
     // TODO: Price display change
-    
-    let displayValues = "Sort"
 
-    if(sortVal === "Ascending Price"){
 
+    if (sortVal === "Ascending Price") {
+
+        setDisplayValues("")
         setSortVal("Price : Low to High")
-        displayValues=" ";
     }
 
-    if(sortVal === "Descending Price"){
-        
+    else if (sortVal === "Descending Price") {
+        setDisplayValues("");
         setSortVal("Price : High to Low")
-        displayValues = " hehe";
-      
+
+
+    }
+    else if (sortVal === "newest" || sortVal === "hotgGifts" || sortVal === "Promotions") {
+        setDisplayValues("Sort: ")
     }
 
 
@@ -114,21 +116,26 @@ function DisplaySortOptions({ sP, sortVal, setSortVal, ssP }) {
                 justifyContent: "space-between",
                 alignItems: "center",
             }}>
-            {displayValues}: {sortVal}
+            {displayValues} {sortVal}
             <div
-                
-                    onClick={() => {
-                        sP.delete('orderBy');
-                        ssP(sP)
-                    }}
-                >
-                    &times;
-                
+
+                onClick={() => {
+                    sP.delete('orderBy');
+                    ssP(sP)
+                }}
+            >
+                &times;
+
             </div>
         </span>
     );
 }
 export { DisplaySortOptions };
+
+
+
+
+
 export default function BigDropdown({
     state,
     sP,
