@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import "../App.css";
 
-function MyButtons({setButtonText, changeURL, deleteChanges, setButtonClicked }) {
+function MyButtons({ setButtonText, changeURL, deleteChanges, setButtonClicked }) {
     function setBtnClk() {
         setButtonClicked(false)
         setButtonText("Open Filters")
@@ -59,51 +59,15 @@ function MyDropDowns({ data, string, setVal, val }) {
 }
 
 
-export default function Dropdown({setButtonText, setButtonClicked }) {
+export default function Dropdown({ state, sP, ssP, genderVal, setGenderVal, occasionVal, setOccasionVal, relationVal, setRelationVal,
+    setButtonText, setButtonClicked
+}) {
 
-
-    const [sP, ssP] = useSearchParams();
-    const [state, setState] = useState({
-        occasions: [],
-        relationships: [],
-        genders: []
-    });
-
-
-    const [genderVal, setGenderVal] = useState(sP.get("gender") ?? "")
-    const [occasionVal, setOccasionVal] = useState(sP.get("occasion") ?? "")
-    const [relationVal, setRelationVal] = useState(sP.get("relationship") ?? "")
+    console.log(sP)
 
     console.log("genderval:  " + genderVal)
     console.log("occval:  " + occasionVal)
     console.log("relval:  " + relationVal)
-
-
-    useEffect(() => {
-        (async () => {
-            const [occasions, relationships, genders] = await Promise.all([
-                fetch(
-                    `https://api.toandfrom.com/v2/relationship?all=true&status=activate`
-                )
-                    .then((res) => res.json())
-                    .then((res) => res.data),
-                fetch(`https://api.toandfrom.com/v2/occasion?all=true&status=activate`)
-                    .then((res) => res.json())
-                    .then((res) => res.data),
-                fetch(`https://api.toandfrom.com/v2/gender?all=true&status=activate`)
-                    .then((res) => res.json())
-                    .then((res) => res.data)
-            ]);
-            setState({
-                occasions,
-                relationships,
-                genders
-            });
-        })();
-    }, []);
-
-    console.log(state.occasions)
-
 
     function updateMyUrl() {
         ssP({
@@ -134,7 +98,12 @@ export default function Dropdown({setButtonText, setButtonClicked }) {
 
             <MyDropDowns data={state.relationships} string={"relationship"} setVal={setRelationVal} val={relationVal} />
 
-            <MyButtons setButtonText={setButtonText} changeURL={updateMyUrl} deleteChanges={deleteChanges} setButtonClicked={setButtonClicked} />
+            <MyButtons
+                setButtonText={setButtonText}
+                changeURL={updateMyUrl}
+                deleteChanges={deleteChanges}
+                setButtonClicked={setButtonClicked}
+            />
 
             <h1></h1>
 

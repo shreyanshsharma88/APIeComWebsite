@@ -62,8 +62,9 @@ export function OpenButton({buttonText,setButtonText, buttonClicked, setButtonCl
 }
 
 
-export default function BigDropdown() {
-
+export default function BigDropdown({state, sP , ssP , genderVal , setGenderVal , occasionVal , setOccasionVal , relationVal , setRelationVal}) {
+    
+    console.log(state.genders)
     const [buttonText, setButtonText] = useState("Open Filters")
 
     const [buttonClicked, setButtonClicked] = useState(false)
@@ -74,7 +75,7 @@ export default function BigDropdown() {
         <div>
             <OpenButton buttonText={buttonText} setButtonText={setButtonText} buttonClicked={buttonClicked} setButtonClicked={setButtonClicked} />
 
-            {buttonClicked && <Dropdown setButtonText={setButtonText} setButtonClicked={setButtonClicked} />}
+            {buttonClicked && <Dropdown state={state} sP={sP} ssP={ssP} genderVal={genderVal} setGenderVal={setGenderVal} occasionVal={occasionVal} setOccasionVal={setOccasionVal} relationVal={relationVal} setRelationVal={setRelationVal} setButtonText={setButtonText} setButtonClicked={setButtonClicked} />} 
         </div>
     )
 }
