@@ -1,111 +1,140 @@
-
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import "../App.css";
 
-
-function MyButtons({ setButtonText, changeURL, deleteChanges, setButtonClicked }) {
-    function setBtnClk() {
-        setButtonClicked(false)
-        setButtonText("Open Filters")
-    }
-    return (
-        <div className="mybutton">
-
-            <button
-                className="btn del"
-                onClick={()=>{
-                    {setBtnClk()}
-                    {deleteChanges()}}}
-            >Delete changes</button>
-            <button
-                className="btn"
-                onClick={() => {
-                    // setButtonClicked(false)
-                    { setBtnClk() }
-                    { changeURL() }
-                }
-                }>apply changes</button>
-
-
-        </div>
-    )
+function MyButtons({
+  setButtonText,
+  changeURL,
+  deleteChanges,
+  setButtonClicked,
+}) {
+  function setBtnClk() {
+    setButtonClicked(false);
+    setButtonText("Open Filters");
+  }
+  return (
+    <div className="mybutton">
+      <button
+        className="btn del"
+        onClick={() => {
+          {
+            setBtnClk();
+          }
+          {
+            deleteChanges();
+          }
+        }}
+      >
+        Delete changes
+      </button>
+      <button
+        className="btn"
+        onClick={() => {
+          // setButtonClicked(false)
+          {
+            setBtnClk();
+          }
+          {
+            changeURL();
+          }
+        }}
+      >
+        apply changes
+      </button>
+    </div>
+  );
 }
-
-
 
 function MyDropDowns({ data, string, setVal, val }) {
-    return (
-        <div className="selectTag">
+  return (
+    <div className="selectTag">
+      <p className="txt">{string}</p>
 
-            <p className="txt">{string}</p>
-
-            <select
-                className="drops"
-                style={{ width: "350px", height: "70px" }}
-                value={val}
-                onChange={(e) => {
-                    // changeURL()
-                    setVal(e.target.value);
-                }}
-            >
-                <option value="">None</option>
-                {data.map((item) => (
-                    <option value={item.id} key={item.id}>
-                        {item.name}
-                    </option>
-                ))}
-            </select>
-
-        </div>
-    )
+      <select
+        className="drops"
+        style={{ width: "350px", height: "70px" }}
+        value={val}
+        onChange={(e) => {
+          // changeURL()
+          setVal(e.target.value);
+        }}
+      >
+        <option value="">None</option>
+        {data.map((item) => (
+          <option value={item.id} key={item.id}>
+            {item.name}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
 }
 
-
-export default function Dropdown({  state, sP, ssP, genderVal, setGenderVal, occasionVal, setOccasionVal, relationVal, setRelationVal,
-    setButtonText, setButtonClicked
+export default function Dropdown({
+  state,
+  sP,
+  ssP,
+  genderVal,
+  setGenderVal,
+  occasionVal,
+  setOccasionVal,
+  relationVal,
+  setRelationVal,
+  setButtonText,
+  setButtonClicked,
+  sortVal,
 }) {
+  function updateMyUrl() {
+    ssP({
+      gender: genderVal,
+      occasion: occasionVal,
+      relationship: relationVal,
+      orderBy: sortVal,
+    });
+  }
 
+  function deleteChanges() {
+    setGenderVal("");
+    setOccasionVal("");
+    setRelationVal("");
+    ssP({
+      gender: "",
+      occasion: "",
+      relationship: "",
+    });
+  }
 
-    function updateMyUrl() {
-        ssP({
-            gender: genderVal,
-            occasion: occasionVal,
-            relationship: relationVal
-        })
-    }
+  return (
+    <div className="App">
+      <MyDropDowns
+        data={state.genders}
+        string={"gender"}
+        setVal={setGenderVal}
+        val={genderVal}
+      />
 
-    function deleteChanges() {
-        setGenderVal("")
-        setOccasionVal("")
-        setRelationVal("")
-        ssP({
-            gender: "",
-            occasion: "",
-            relationship: "",
-            
-        })
-    }
+      <MyDropDowns
+        data={state.occasions}
+        string={"occasion"}
+        setVal={setOccasionVal}
+        val={occasionVal}
+      />
 
-    return (
+      <MyDropDowns
+        data={state.relationships}
+        string={"relationship"}
+        setVal={setRelationVal}
+        val={relationVal}
+      />
 
-        <div className="App">
+      <MyButtons
+        setButtonText={setButtonText}
+        changeURL={updateMyUrl}
+        deleteChanges={deleteChanges}
+        setButtonClicked={setButtonClicked}
+      />
 
-            <MyDropDowns data={state.genders} string={"gender"} setVal={setGenderVal} val={genderVal} />
-
-            <MyDropDowns data={state.occasions} string={"occasion"} setVal={setOccasionVal} val={occasionVal} />
-
-            <MyDropDowns data={state.relationships} string={"relationship"} setVal={setRelationVal} val={relationVal} />
-
-            <MyButtons
-                setButtonText={setButtonText}
-                changeURL={updateMyUrl}
-                deleteChanges={deleteChanges}
-                setButtonClicked={setButtonClicked}
-            />
-
-            <h1></h1>
-
-        </div>
-    );
+      <h1></h1>
+    </div>
+  );
 }
