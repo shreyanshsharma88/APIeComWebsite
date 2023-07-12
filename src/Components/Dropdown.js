@@ -12,7 +12,7 @@ function MyButtons({
 
 
     function setBtnClk() {
-        // setButtonClicked(false);
+        setButtonClicked(false);
         setButtonText("Open Filters");
     }
     return (
