@@ -64,15 +64,15 @@ function ShowMeGiftsBox({ setGenderVal, setOccasionVal, setRelationVal, ssP, set
     )
 }
 
-function MyDropDowns({ data, searchValue, setVal, val ,sP}) {
+function MyDropDowns({ data, searchValue, setVal, val, sP }) {
     return (
         <div className="selectTag">
-            <p className="txt">{searchValue}</p>
+            {/* <p className="txt">{searchValue}</p> */}
 
             <select
                 className="drops"
                 style={{ width: "350px", height: "70px" }}
-                value={sP.get(searchValue) ?? val}
+                value={ val ?? sP.get(searchValue)}
                 onChange={(e) => {
                     // changeURL()
                     setVal(e.target.value);
@@ -106,7 +106,7 @@ export default function Dropdown({
 }) {
     function updateMyUrl() {
 
-        if (sortVal === "") {
+        if (!sortVal) {
             ssP({
                 gender: genderVal,
                 occasion: occasionVal,
@@ -115,12 +115,13 @@ export default function Dropdown({
             });
         }
 
-        if(genderVal ==="" && occasionVal ==="" && relationVal===""){
+        if (genderVal === "" && occasionVal === "" && relationVal === "") {
             ssP({});
         }
 
 
-        else {
+
+        if (sortVal) {
             ssP({
                 gender: genderVal,
                 occasion: occasionVal,
@@ -148,12 +149,13 @@ export default function Dropdown({
     return (
         <div className="App">
 
-            <h1 style={{marginTop:"0.5px"}} onClick={() => { setButtonClicked(false) }}> &times; </h1>
+            <h1 style={{ marginTop: "0.5px" }} onClick={() => { setButtonClicked(false) }}> &times; </h1>
 
-            
+
             <ShowMeGiftsBox setGenderVal={setGenderVal} setOccasionVal={setOccasionVal} setRelationVal={setRelationVal} ssP={ssP} setButtonClicked={setButtonClicked} setButtonText={setButtonText} />
             <hr style={{ marginTop: "35px" }}></hr>
             <h3>FILTERS: </h3>
+            <h4>Gender</h4>
             <MyDropDowns
                 data={state.genders}
                 searchValue={"gender"}
@@ -161,7 +163,7 @@ export default function Dropdown({
                 val={genderVal}
                 sP={sP}
             />
-
+            <h4>Occasion</h4>
             <MyDropDowns
                 data={state.occasions}
                 searchValue={"occasion"}
@@ -169,7 +171,7 @@ export default function Dropdown({
                 val={occasionVal}
                 sP={sP}
             />
-
+            <h4>Relationship</h4>
             <MyDropDowns
                 data={state.relationships}
                 searchValue={"relationship"}
