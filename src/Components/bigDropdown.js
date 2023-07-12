@@ -136,6 +136,7 @@ function DisplaySortOptions({ sP, sortVal, setSortVal, ssP, displayValues, setDi
                 onClick={() => {
                     sP.delete('order');
                     ssP(sP)
+                    setSortVal("")
                 }}
             >
                 &times;

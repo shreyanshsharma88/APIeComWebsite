@@ -9,7 +9,7 @@ function MyButtons({
     setButtonClicked,
 }) {
     function setBtnClk() {
-        setButtonClicked(false);
+        // setButtonClicked(false);
         setButtonText("Open Filters");
     }
     return (
@@ -44,7 +44,7 @@ function MyButtons({
     );
 }
 
-function ShowMeGiftsBox({setGenderVal , setOccasionVal , setRelationVal,ssP , setButtonClicked , setButtonText}) {
+function ShowMeGiftsBox({ setGenderVal, setOccasionVal, setRelationVal, ssP, setButtonClicked, setButtonText }) {
     return (
         <div className="ShowMeGiftsBox" onClick={() => {
             setGenderVal("");
@@ -104,12 +104,27 @@ export default function Dropdown({
     sortVal,
 }) {
     function updateMyUrl() {
-        ssP({
-            gender: genderVal,
-            occasion: occasionVal,
-            relationship: relationVal,
-            order: sortVal,
-        });
+
+        if (sortVal === "") {
+            ssP({
+                gender: genderVal,
+                occasion: occasionVal,
+                relationship: relationVal
+
+            });
+        }
+
+
+        else {
+            ssP({
+                gender: genderVal,
+                occasion: occasionVal,
+                relationship: relationVal,
+                order: sortVal
+
+            })
+
+        }
     }
 
     function deleteChanges() {
@@ -125,8 +140,11 @@ export default function Dropdown({
 
     return (
         <div className="App">
+
+            <h1 onClick={() => { setButtonClicked(false) }}> &times; </h1>
+
             <h3>FILTERS: </h3>
-            <ShowMeGiftsBox setGenderVal={setGenderVal} setOccasionVal={setOccasionVal} setRelationVal={setRelationVal} ssP={ssP} setButtonClicked={setButtonClicked} setButtonText={setButtonText}/>
+            <ShowMeGiftsBox setGenderVal={setGenderVal} setOccasionVal={setOccasionVal} setRelationVal={setRelationVal} ssP={ssP} setButtonClicked={setButtonClicked} setButtonText={setButtonText} />
             <hr style={{ marginTop: "35px" }}></hr>
             <MyDropDowns
                 data={state.genders}
