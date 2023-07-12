@@ -83,7 +83,7 @@ export default function App() {
       >
 
         <DisplayFilters
-          displayValue={"Gift For: "}
+          displayValue={"Gift For : "}
           filterValue={"gender"}
           sP={sP}
           data={state.genders}
@@ -91,7 +91,7 @@ export default function App() {
           setVal={setGenderVal}
         />
         <DisplayFilters
-          displayValue={"Occasion: "}
+          displayValue={"Occasion : "}
           filterValue={"occasion"}
           sP={sP}
           data={state.occasions}
@@ -99,7 +99,7 @@ export default function App() {
           setVal={setOccasionVal}
         />
         <DisplayFilters
-          displayValue={"Relationship: "}
+          displayValue={"Relationship : "}
           filterValue={"relationship"}
           sP={sP}
           data={state.relationships}
@@ -114,7 +114,9 @@ export default function App() {
 
 
 
-      {hasParameters && <button onClick={() => {
+      {hasParameters && <button 
+      style={{padding:"10px" , backgroundColor: "white" , border:"1px solid pink", marginLeft:"20px"}}
+      onClick={() => {
         setGenderVal("");
         setOccasionVal("");
         setRelationVal("");
@@ -122,7 +124,7 @@ export default function App() {
         ssP({});
         
       }
-      }>remove all</button>}
+      }>Clear all Filters</button>}
     </div>
   );
 }
