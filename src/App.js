@@ -25,6 +25,9 @@ export default function App() {
   const [displayValues, setDisplayValues] = useState("Sort:")
 
 
+  const queryString = window.location.search;
+  const hasParameters = queryString.length > 1;
+  
 
   useEffect(() => {
     (async () => {
@@ -69,6 +72,8 @@ export default function App() {
         setSortVal={setSortVal}
       />
       <p style={{ padding: "10px" }}>Home/Gifts</p>
+
+      {hasParameters && <h4>Filters: </h4>}
       <div
         style={{
           display: "flex",
@@ -107,15 +112,17 @@ export default function App() {
         {/* <DisplayFilters string={"order"} sP={sP} data={state.relationships} /> */}
       </div>
 
-      <button onClick={() => {
+
+
+      {hasParameters && <button onClick={() => {
         setGenderVal("");
         setOccasionVal("");
         setRelationVal("");
-        setSortVal("")
+        setSortVal("");
         ssP({});
         
       }
-      }>remove all</button>
+      }>remove all</button>}
     </div>
   );
 }

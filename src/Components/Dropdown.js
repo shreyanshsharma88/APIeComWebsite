@@ -115,6 +115,10 @@ export default function Dropdown({
             });
         }
 
+        if(genderVal ==="" && occasionVal ==="" && relationVal===""){
+            ssP({});
+        }
+
 
         else {
             ssP({
