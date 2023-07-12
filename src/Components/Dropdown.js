@@ -169,7 +169,7 @@ export default function Dropdown({
     return (
         <div className="App">
 
-            <h1 style={{ marginTop: "0.5px" }} onClick={() => { setButtonClicked(false) }}> &times; </h1>
+            <h1 className="cross" style={{ marginTop: "0.5px" }} onClick={() => { setButtonClicked(false) }}> &times; </h1>
 
 
             <ShowMeGiftsBox setGenderVal={setGenderVal} setOccasionVal={setOccasionVal} setRelationVal={setRelationVal} ssP={ssP} setButtonClicked={setButtonClicked} setButtonText={setButtonText} />

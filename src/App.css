@@ -91,6 +91,7 @@ justify-content: space-between;
   border-radius: 10px;
 box-shadow: 5px 5px 5px 5px rgb(228, 220, 220);
   background-color: #ffffff;
+  max-height: 850px;
 }
 
 .btn{
@@ -160,3 +161,6 @@ box-shadow: 5px 5px 5px 5px rgb(228, 220, 220);
 }
 
 
+.cross:hover{
+  cursor: pointer;
+}

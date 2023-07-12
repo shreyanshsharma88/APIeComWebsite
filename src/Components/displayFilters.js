@@ -47,6 +47,7 @@ export default function DisplayFilters({
       <p>{displayValue}</p>
       <p>{filterVal} </p>
       <h4
+      className="cross"
       style={{padding:"10px"}}
       onClick={()=>{
         setVal("")

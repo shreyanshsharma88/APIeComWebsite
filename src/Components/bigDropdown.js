@@ -140,6 +140,7 @@ function DisplaySortOptions({ sP, sortVal, setSortVal, ssP, displayValues, setDi
             }}>
             {displayValues} {sortVal}
             <div
+            className="cross"
             style={{padding:"10px"}}
 
                 onClick={() => {
