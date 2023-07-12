@@ -102,6 +102,7 @@ export default function Dropdown({
     setButtonText,
     setButtonClicked,
     sortVal,
+    setSortVal
 }) {
     function updateMyUrl() {
 
@@ -131,6 +132,7 @@ export default function Dropdown({
         setGenderVal("");
         setOccasionVal("");
         setRelationVal("");
+        setSortVal("")
         setButtonClicked(false)
         ssP({
             //   gender: "",
@@ -142,11 +144,12 @@ export default function Dropdown({
     return (
         <div className="App">
 
-            <h1 onClick={() => { setButtonClicked(false) }}> &times; </h1>
+            <h1 style={{marginTop:"0.5px"}} onClick={() => { setButtonClicked(false) }}> &times; </h1>
 
-            <h3>FILTERS: </h3>
+            
             <ShowMeGiftsBox setGenderVal={setGenderVal} setOccasionVal={setOccasionVal} setRelationVal={setRelationVal} ssP={ssP} setButtonClicked={setButtonClicked} setButtonText={setButtonText} />
             <hr style={{ marginTop: "35px" }}></hr>
+            <h3>FILTERS: </h3>
             <MyDropDowns
                 data={state.genders}
                 searchValue={"gender"}

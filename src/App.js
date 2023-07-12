@@ -19,12 +19,12 @@ export default function App() {
   const [genderVal, setGenderVal] = useState(sP.get("gender") ?? "");
   const [occasionVal, setOccasionVal] = useState(sP.get("occasion") ?? "");
   const [relationVal, setRelationVal] = useState(sP.get("relationship") ?? "");
-  
+
   const [sortVal, setSortVal] = useState(sP.get("order" ?? ""));
 
-  const [displayValues , setDisplayValues] = useState("Sort:")
+  const [displayValues, setDisplayValues] = useState("Sort:")
 
-  
+
 
   useEffect(() => {
     (async () => {
@@ -49,6 +49,8 @@ export default function App() {
     })();
   }, []);
 
+
+
   return (
     <div>
       <Nav />
@@ -66,7 +68,7 @@ export default function App() {
         sortVal={sortVal}
         setSortVal={setSortVal}
       />
-    <p style={{padding:"10px"}}>Home/Gifts</p>
+      <p style={{ padding: "10px" }}>Home/Gifts</p>
       <div
         style={{
           display: "flex",
@@ -74,7 +76,7 @@ export default function App() {
           padding: "25px",
         }}
       >
-        
+
         <DisplayFilters
           displayValue={"Gift For: "}
           filterValue={"gender"}
@@ -100,17 +102,20 @@ export default function App() {
           setVal={setRelationVal}
         />
 
-        {sortVal &&<DisplaySortOptions sP={sP} sortVal={sortVal} setSortVal={setSortVal} ssP={ssP} displayValues={displayValues} setDisplayValues={setDisplayValues}/>}
+        {sortVal && <DisplaySortOptions sP={sP} sortVal={sortVal} setSortVal={setSortVal} ssP={ssP} displayValues={displayValues} setDisplayValues={setDisplayValues} />}
 
         {/* <DisplayFilters string={"order"} sP={sP} data={state.relationships} /> */}
       </div>
 
-      <button onClick={ () => {
+      <button onClick={() => {
         setGenderVal("");
         setOccasionVal("");
         setRelationVal("");
-        ssP({})}
-        }>remove all</button>
+        setSortVal("")
+        ssP({});
+        
+      }
+      }>remove all</button>
     </div>
   );
 }

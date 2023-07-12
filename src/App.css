@@ -140,8 +140,9 @@ box-shadow: 5px 5px 5px 5px rgb(228, 220, 220);
 }
 
 .ShowMeGiftsBox {
+  font-family: poppins;
   text-align: center;
-  padding: 30px;
+  padding: 20px;
   background-color: white;
   justify-content: center;
   align-items: center;

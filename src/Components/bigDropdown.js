@@ -169,6 +169,7 @@ export default function BigDropdown({
 
     const [buttonClicked, setButtonClicked] = useState(false);
 
+    
     // console.log(buttonClicked)
     return (
         <div>
@@ -196,6 +197,7 @@ export default function BigDropdown({
                     setButtonText={setButtonText}
                     setButtonClicked={setButtonClicked}
                     sortVal={sortVal}
+                    setSortVal={setSortVal}
                 />
             )}
         </div>
