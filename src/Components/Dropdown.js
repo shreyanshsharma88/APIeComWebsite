@@ -37,18 +37,17 @@ function MyButtons({
           {
             changeURL();
           }
-        }}
-      >
+        }}>
         apply changes
       </button>
     </div>
   );
 }
 
-function MyDropDowns({ data, string, setVal, val }) {
+function MyDropDowns({ data,  searchValue, setVal, val }) {
   return (
     <div className="selectTag">
-      <p className="txt">{string}</p>
+      <p className="txt">{searchValue}</p>
 
       <select
         className="drops"
@@ -89,7 +88,7 @@ export default function Dropdown({
       gender: genderVal,
       occasion: occasionVal,
       relationship: relationVal,
-      orderBy: sortVal,
+      order: sortVal,
     });
   }
 
@@ -108,21 +107,21 @@ export default function Dropdown({
     <div className="App">
       <MyDropDowns
         data={state.genders}
-        string={"gender"}
+        searchValue={"gender"}
         setVal={setGenderVal}
         val={genderVal}
       />
 
       <MyDropDowns
         data={state.occasions}
-        string={"occasion"}
+        searchValue={"occasion"}
         setVal={setOccasionVal}
         val={occasionVal}
       />
 
       <MyDropDowns
         data={state.relationships}
-        string={"relationship"}
+        searchValue={"relationship"}
         setVal={setRelationVal}
         val={relationVal}
       />

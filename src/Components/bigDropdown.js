@@ -40,12 +40,12 @@ export function OpenButton({
                 </button>
 
                 <select
-                    value={sP.get("orderBy") ?? "sort"}
+                    value={sP.get("order") ?? "Sort"}
                     className="openButton"
                     onChange={(e) => {
-                        sP.delete("orderBy")
+                        sP.delete("order")
                         setSortVal(e.target.value);
-                        sP.append("orderBy", e.target.value)
+                        sP.append("order", e.target.value)
                         ssP(sP)
                     }}
                 >
@@ -53,8 +53,8 @@ export function OpenButton({
                     <option value={"Ascending Price"}>Price : Low to High</option>
                     <option value={"Descending Price"}>Price : High to Low</option>
                     <option value={"newest"}>Newest</option>
-                    <option value={"hotGifts"}>Hot Gifts</option>
-                    <option value={"Promotions"}>Promotions</option>
+                    <option value={"hotgift"}>Hot Gifts</option>
+                    <option value={"discount_percentage"}>Promotions</option>
                 </select>
             </div>
 
@@ -78,7 +78,7 @@ export function OpenButton({
 }
 
 function DisplaySortOptions({ sP, sortVal, setSortVal, ssP, displayValues, setDisplayValues }) {
-    let sVal = sP.get("orderBy")
+    let sVal = sP.get("order")
     if (!sVal) {
         return;
     }
@@ -98,8 +98,22 @@ function DisplaySortOptions({ sP, sortVal, setSortVal, ssP, displayValues, setDi
 
 
     }
-    else if (sortVal === "newest" || sortVal === "hotgGifts" || sortVal === "Promotions") {
+    else if (sortVal === "newest" || sortVal === "hotgift" || sortVal === "Promotions") {
         setDisplayValues("Sort: ")
+
+        if(sortVal === "newest"){
+            setSortVal("Newest")
+
+        }
+        if(sortVal === "hotgift"){
+            setSortVal("Hot Gifts")
+
+        }
+       
+    }
+    if(sortVal === "discount_percentage"){
+        setSortVal("Promotions")
+
     }
 
 
@@ -120,7 +134,7 @@ function DisplaySortOptions({ sP, sortVal, setSortVal, ssP, displayValues, setDi
             <div
 
                 onClick={() => {
-                    sP.delete('orderBy');
+                    sP.delete('order');
                     ssP(sP)
                 }}
             >

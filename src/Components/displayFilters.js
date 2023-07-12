@@ -8,7 +8,7 @@ export default function DisplayFilters({
   let filterID = sP.get(filterValue);
   let filterVal = "";
 
-  // let sort = sP.get("orderBy")
+  // let sort = sP.get("order")
 
   // if(sort){
   //     console.log("sort exist, write more stuff")
@@ -32,6 +32,7 @@ export default function DisplayFilters({
   return (
     <span
       style={{
+        
         backgroundColor: "#E8EFF1",
         padding: "10px",
         borderRadius: "15px",

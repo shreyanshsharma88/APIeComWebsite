@@ -2,13 +2,13 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "./App.css";
 import { useSearchParams } from "react-router-dom";
-import Dropdown from "./Components/Dropdown";
 import BigDropdown, { OpenButton } from "./Components/bigDropdown";
 import DisplayFilters from "./Components/displayFilters";
 import Nav from "./Components/nav";
 import { DisplaySortOptions } from "./Components/bigDropdown";
 
 export default function App() {
+
   const [sP, ssP] = useSearchParams();
   const [state, setState] = useState({
     occasions: [],
@@ -20,7 +20,7 @@ export default function App() {
   const [occasionVal, setOccasionVal] = useState(sP.get("occasion") ?? "");
   const [relationVal, setRelationVal] = useState(sP.get("relationship") ?? "");
   
-  const [sortVal, setSortVal] = useState(sP.get("orderBy" ?? ""));
+  const [sortVal, setSortVal] = useState(sP.get("order" ?? ""));
 
   const [displayValues , setDisplayValues] = useState("Sort:")
 
@@ -97,10 +97,15 @@ export default function App() {
 
         {sortVal &&<DisplaySortOptions sP={sP} sortVal={sortVal} setSortVal={setSortVal} ssP={ssP} displayValues={displayValues} setDisplayValues={setDisplayValues}/>}
 
-        {/* <DisplayFilters string={"orderBy"} sP={sP} data={state.relationships} /> */}
+        {/* <DisplayFilters string={"order"} sP={sP} data={state.relationships} /> */}
       </div>
 
-      <button onClick={ () => {ssP({})}}>remove all</button>
+      <button onClick={ () => {
+        setGenderVal("");
+        setOccasionVal("");
+        setRelationVal("");
+        ssP({})}
+        }>remove all</button>
     </div>
   );
 }
