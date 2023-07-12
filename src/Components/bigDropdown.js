@@ -41,7 +41,7 @@ export function OpenButton({
                 </button>
 
                 <select
-                    value={ sP.get('order') ?? "SortBY"}
+                    value={sP.get('order') ?? "SortBY"}
                     className="openButton"
                     onChange={(e) => {
                         sP.delete("order")
@@ -102,17 +102,17 @@ function DisplaySortOptions({ sP, sortVal, setSortVal, ssP, displayValues, setDi
     else if (sortVal === "newest" || sortVal === "hotgift" || sortVal === "Promotions") {
         setDisplayValues("Sort: ")
 
-        if(sortVal === "newest"){
+        if (sortVal === "newest") {
             setSortVal("Newest")
 
         }
-        if(sortVal === "hotgift"){
+        if (sortVal === "hotgift") {
             setSortVal("Hot Gifts")
 
         }
-       
+
     }
-    if(sortVal === "discount_percentage"){
+    if (sortVal === "discount_percentage") {
         setSortVal("Promotions")
 
     }
@@ -123,16 +123,17 @@ function DisplaySortOptions({ sP, sortVal, setSortVal, ssP, displayValues, setDi
         <span
             style={{
                 backgroundColor: "#E8EFF1",
-                padding: "10px",
+                padding: "20px",
                 borderRadius: "15px",
-                width: "270px",
-                height: "40px",
+                // width: "270px",
+                // height: "40px",
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
             }}>
             {displayValues} {sortVal}
             <div
+            style={{padding:"10px"}}
 
                 onClick={() => {
                     sP.delete('order');
@@ -169,7 +170,7 @@ export default function BigDropdown({
 
     const [buttonClicked, setButtonClicked] = useState(false);
 
-    
+
     // console.log(buttonClicked)
     return (
         <div>

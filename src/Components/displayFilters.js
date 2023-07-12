@@ -35,10 +35,10 @@ export default function DisplayFilters({
       style={{
         
         backgroundColor: "#E8EFF1",
-        padding: "10px",
+        padding: "20px",
         borderRadius: "15px",
-        width: "270px",
-        height: "40px",
+        // width: "270px",
+        // height: "40px",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
@@ -47,6 +47,7 @@ export default function DisplayFilters({
       <p>{displayValue}</p>
       <p>{filterVal} </p>
       <h4
+      style={{padding:"10px"}}
       onClick={()=>{
         setVal("")
 
