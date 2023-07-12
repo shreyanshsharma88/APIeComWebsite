@@ -64,7 +64,7 @@ function ShowMeGiftsBox({ setGenderVal, setOccasionVal, setRelationVal, ssP, set
     )
 }
 
-function MyDropDowns({ data, searchValue, setVal, val }) {
+function MyDropDowns({ data, searchValue, setVal, val ,sP}) {
     return (
         <div className="selectTag">
             <p className="txt">{searchValue}</p>
@@ -72,7 +72,7 @@ function MyDropDowns({ data, searchValue, setVal, val }) {
             <select
                 className="drops"
                 style={{ width: "350px", height: "70px" }}
-                value={val}
+                value={sP.get(searchValue) ?? val}
                 onChange={(e) => {
                     // changeURL()
                     setVal(e.target.value);
@@ -131,6 +131,7 @@ export default function Dropdown({
         setGenderVal("");
         setOccasionVal("");
         setRelationVal("");
+        setButtonClicked(false)
         ssP({
             //   gender: "",
             //   occasion: "",
@@ -151,6 +152,7 @@ export default function Dropdown({
                 searchValue={"gender"}
                 setVal={setGenderVal}
                 val={genderVal}
+                sP={sP}
             />
 
             <MyDropDowns
@@ -158,6 +160,7 @@ export default function Dropdown({
                 searchValue={"occasion"}
                 setVal={setOccasionVal}
                 val={occasionVal}
+                sP={sP}
             />
 
             <MyDropDowns
@@ -165,6 +168,7 @@ export default function Dropdown({
                 searchValue={"relationship"}
                 setVal={setRelationVal}
                 val={relationVal}
+                sP={sP}
             />
 
             <MyButtons

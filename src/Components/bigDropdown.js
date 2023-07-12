@@ -36,11 +36,12 @@ export function OpenButton({
                         }
                     }}
                 >
-                    {buttonText}
+                    {/* {buttonText} */}
+                    Show Filters
                 </button>
 
                 <select
-                    value={ "Sort"}
+                    value={ sP.get('order') ?? "SortBY"}
                     className="openButton"
                     onChange={(e) => {
                         sP.delete("order")

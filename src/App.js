@@ -24,6 +24,8 @@ export default function App() {
 
   const [displayValues , setDisplayValues] = useState("Sort:")
 
+  
+
   useEffect(() => {
     (async () => {
       const [occasions, relationships, genders] = await Promise.all([
@@ -79,6 +81,7 @@ export default function App() {
           sP={sP}
           data={state.genders}
           ssP={ssP}
+          setVal={setGenderVal}
         />
         <DisplayFilters
           displayValue={"Occasion: "}
@@ -86,6 +89,7 @@ export default function App() {
           sP={sP}
           data={state.occasions}
           ssP={ssP}
+          setVal={setOccasionVal}
         />
         <DisplayFilters
           displayValue={"Relationship: "}
@@ -93,6 +97,7 @@ export default function App() {
           sP={sP}
           data={state.relationships}
           ssP={ssP}
+          setVal={setRelationVal}
         />
 
         {sortVal &&<DisplaySortOptions sP={sP} sortVal={sortVal} setSortVal={setSortVal} ssP={ssP} displayValues={displayValues} setDisplayValues={setDisplayValues}/>}

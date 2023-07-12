@@ -4,6 +4,7 @@ export default function DisplayFilters({
   sP,
   data,
   ssP,
+  setVal
 }) {
   let filterID = sP.get(filterValue);
   let filterVal = "";
@@ -47,7 +48,11 @@ export default function DisplayFilters({
       <p>{filterVal} </p>
       <h4
       onClick={()=>{
+        setVal("")
+
           sP.delete(filterValue);
+
+
           ssP(sP)}}
       >
         &times;
