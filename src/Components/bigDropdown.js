@@ -57,6 +57,7 @@ export function OpenButton({
                     <option value={"newest"}>Newest</option>
                     <option value={"hotgift"}>Hot Gifts</option>
                     <option value={"discount_percentage"}>Promotions</option>
+                    <option value={"toandfrom"}>To&From Marketplace</option>
                 </select>
             </div>
 
@@ -115,6 +116,11 @@ function DisplaySortOptions({ sP, sortVal, setSortVal, ssP, displayValues, setDi
     }
     if (sortVal === "discount_percentage") {
         setSortVal("Promotions")
+
+    }
+
+    if (sortVal === "toandfrom") {
+        setSortVal("To&From Marketplace")
 
     }
 

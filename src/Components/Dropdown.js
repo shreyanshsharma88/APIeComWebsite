@@ -8,6 +8,9 @@ function MyButtons({
     deleteChanges,
     setButtonClicked,
 }) {
+
+
+
     function setBtnClk() {
         // setButtonClicked(false);
         setButtonText("Open Filters");
@@ -58,13 +61,15 @@ function ShowMeGiftsBox({ setGenderVal, setOccasionVal, setRelationVal, ssP, set
             setButtonClicked(false);
             setButtonText("Open Filters")
         }}>
-            {/* <button className="showGift">JUST SHOW ME THE GIFTS</button> */}
             <h5 >JUST SHOW ME THE GIFTS</h5>
         </div>
     )
 }
 
-function MyDropDowns({ data, searchValue, setVal, val, sP }) {
+function MyDropDowns({ data, searchValue, setVal, val, sP, ssP }) {
+
+
+
     return (
         <div className="selectTag">
             {/* <p className="txt">{searchValue}</p> */}
@@ -72,13 +77,13 @@ function MyDropDowns({ data, searchValue, setVal, val, sP }) {
             <select
                 className="drops"
                 style={{ width: "350px", height: "70px" }}
-                value={ val ?? sP.get(searchValue)}
+                value={val ?? sP.get(searchValue)}
                 onChange={(e) => {
                     // changeURL()
                     setVal(e.target.value);
                 }}
             >
-                <option value="">None</option>
+                <option value="" hidden>None</option>
                 {data.map((item) => (
                     <option value={item.id} key={item.id}>
                         {item.name}
@@ -106,31 +111,46 @@ export default function Dropdown({
 }) {
     function updateMyUrl() {
 
-        if (!sortVal) {
-            ssP({
-                gender: genderVal,
-                occasion: occasionVal,
-                relationship: relationVal
 
-            });
+        const params = {};
+        if (genderVal !== "") {
+            params.gender = genderVal;
         }
+        if (occasionVal !== "") {
+            params.occasion = occasionVal;
+        }
+        if (relationVal !== "") {
+            params.relationship = relationVal;
+        }
+        if (sortVal !== "") {
+            params.orderby = sortVal;
+        }
+        ssP(params);
+
+
+        // if (!sortVal) {
+        //     ssP({
+        //         gender: genderVal,
+        //         occasion: occasionVal,
+        //         relationship: relationVal
+
+        //     });
+        // }
+        // if (sortVal) {
+        //     ssP({
+        //         gender: genderVal,
+        //         occasion: occasionVal,
+        //         relationship: relationVal,
+        //         order: sortVal
+
+        //     })
+
+        // }
 
         if (genderVal === "" && occasionVal === "" && relationVal === "") {
             ssP({});
         }
 
-
-
-        if (sortVal) {
-            ssP({
-                gender: genderVal,
-                occasion: occasionVal,
-                relationship: relationVal,
-                order: sortVal
-
-            })
-
-        }
     }
 
     function deleteChanges() {
@@ -162,6 +182,7 @@ export default function Dropdown({
                 setVal={setGenderVal}
                 val={genderVal}
                 sP={sP}
+                ssP={ssP}
             />
             <h4>Occasion</h4>
             <MyDropDowns
@@ -170,6 +191,7 @@ export default function Dropdown({
                 setVal={setOccasionVal}
                 val={occasionVal}
                 sP={sP}
+                ssP={ssP}
             />
             <h4>Relationship</h4>
             <MyDropDowns
@@ -178,6 +200,7 @@ export default function Dropdown({
                 setVal={setRelationVal}
                 val={relationVal}
                 sP={sP}
+                ssP={ssP}
             />
 
             <MyButtons
