@@ -40,7 +40,7 @@ export function OpenButton({
                 </button>
 
                 <select
-                    value={sP.get("order") ?? "Sort"}
+                    value={ "Sort"}
                     className="openButton"
                     onChange={(e) => {
                         sP.delete("order")
@@ -49,7 +49,7 @@ export function OpenButton({
                         ssP(sP)
                     }}
                 >
-                    <option value={""}>Sort</option>
+                    <option value={""} hidden>Sort By</option>
                     <option value={"Ascending Price"}>Price : Low to High</option>
                     <option value={"Descending Price"}>Price : High to Low</option>
                     <option value={"newest"}>Newest</option>

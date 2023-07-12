@@ -64,8 +64,7 @@ export default function App() {
         sortVal={sortVal}
         setSortVal={setSortVal}
       />
-      {/* <Dropdown stateGen={state.genders} stateOcc={state.occasions} stateRel={state.relationships} sP={sP} ssP={ssP} genderVal={genderVal} setGenderVal={setGenderVal} occasionVal={occasionVal} setOccasionVal={setOccasionVal} relationVal={relationVal} setRelationVal={setRelationVal}  /> */}
-
+    <p style={{padding:"10px"}}>Home/Gifts</p>
       <div
         style={{
           display: "flex",
@@ -73,6 +72,7 @@ export default function App() {
           padding: "25px",
         }}
       >
+        
         <DisplayFilters
           displayValue={"Gift For: "}
           filterValue={"gender"}
