@@ -23,6 +23,7 @@ export function OpenButton({
                 <button
                     className="openButton"
                     onClick={() => {
+                        
                         if (buttonClicked == false) {
                             setButtonClicked(true);
                         } else {

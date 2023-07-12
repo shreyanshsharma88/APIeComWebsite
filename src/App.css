@@ -102,6 +102,10 @@ box-shadow: 5px 5px 5px 5px rgb(228, 220, 220);
   margin-top: 12px;
 
 }
+.btn:hover{
+  transition: 0.5s ease-out;
+  background-color: #ed84b0;
+}
 .txt{
   font-size: 20px;
   font-weight: normal;
@@ -119,6 +123,7 @@ box-shadow: 5px 5px 5px 5px rgb(228, 220, 220);
   border-radius: 10px;
   box-shadow: 1px 1px 1px 1px rgb(232, 213, 230);
 }
+
 
 .whiteHeader{
   justify-content: space-between;
@@ -147,6 +152,11 @@ box-shadow: 5px 5px 5px 5px rgb(228, 220, 220);
   justify-content: center;
   align-items: center;
   border: 1px solid pink;
+}
+.ShowMeGiftsBox:hover{
+  transition: 0.5s ease-out;
+  background-color: #c2f58c;
+
 }
 
 
